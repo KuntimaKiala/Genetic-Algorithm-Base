@@ -1,0 +1,20 @@
+from infinite_monkey_theorem import *
+
+
+
+
+if __name__ == "__main__" :
+    
+    population_size=150 
+    mutationRate = 0.01
+    target = "To be or not to be."
+    population = initialize(population_size=150, mutationRate = 0.01, target = "To be or not to be.")
+    epoch = 500 
+    start = time.time()
+    for i in range(epoch) :
+        run(population, i)
+        
+        if population.finished :
+            end = time.time()
+            print(f"elapse time : {end - start}")
+            break
