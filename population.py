@@ -75,7 +75,7 @@ class Population() :
                     self.matingPool.append(self.population[i])
         
         if not len(self.matingPool) :
-            self.init_score = self.init_score - self.increments*5
+            self.init_score = self.init_score - self.increments*2.5
             self.naturalSelection()
     #4- create the new generation
     def generate(self, target)  :
@@ -101,7 +101,7 @@ class Population() :
         
         if self.generations%1==0 :
             self.init_score += self.increments*1.5
-        print(self.init_score)
+        print("score :", self.init_score)
     def getBest(self) -> string:
         
         worldrecord = 0 

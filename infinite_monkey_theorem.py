@@ -11,6 +11,6 @@ def run(population,i):
     naturalSelection = population.naturalSelection() 
     population.generate(population.target)
     population.calcFitness()
-    print(f"epochs {i}")
-    print(population.getBest())
+    print(f"epochs : {i}")
+    print("phrase :", population.getBest())
     return naturalSelection
