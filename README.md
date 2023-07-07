@@ -2,4 +2,4 @@
 
 Infinite monkey theorem
 
-python version 
+c++ version 
