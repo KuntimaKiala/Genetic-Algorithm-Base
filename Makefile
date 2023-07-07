@@ -1,5 +1,3 @@
-
-
 Compiler = "g++"
 Projet   = run
 Source   = main.cpp
