@@ -101,7 +101,9 @@ class Population() :
         
         if self.generations%1==0 :
             self.init_score += self.increments*1.5
-        print("score :", self.init_score)
+        print("threshold score :", self.init_score)
+        
+        
     def getBest(self) -> string:
         
         worldrecord = 0 

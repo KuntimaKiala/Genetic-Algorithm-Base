@@ -54,7 +54,7 @@ class DNA() :
         
         #3.2 pick mid point randomly
         midpoint =  random.choices([i for i in range(len(self.genes))])[0]
-       
+        
         #3.3 child is the half from both parent from the midpoint
         for i in range(len(self.genes)) :
             if i > midpoint :
@@ -70,7 +70,7 @@ class DNA() :
 
         for i in range(len(self.genes)) :
             
-            if random.random() < mutationRate :
+            if random.random() < mutationRate : #and self.genes[i] != target[i] :
                 self.genes[i] = random.choices(self.alphabet,k=1)[0] 
         
          
