@@ -2,7 +2,7 @@
 #define DNA_HPP
 
 #pragma once
-
+#include <string>
 
 // Genetic Algorithm, Evolving Shakespeare
 
@@ -21,20 +21,28 @@ public:
 
     
 
-     DNA();
-     DNA(int dna_size);
-     ~DNA();
+    DNA(int dna_size);
+    DNA();
+    ~DNA();
     void setDNA(int num);
     int getDNA() ;
     void fitness(std::string target);
     char random(int min, int max);
-    int fitness_score = 0;
-    char *genes = new char[gene_size];
+    int  random(int max);
+    float random();
+    float fitness_score = 0;
+    DNA* crossover( DNA partner);
+    void mutate(float mutationRate);
+    char * GENES () ;
+    //
     
 
 
 protected:
     int gene_size;
+    char *genes = new char[gene_size];
+    int target_size = gene_size ;
+    
     
 };
 

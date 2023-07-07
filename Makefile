@@ -1,6 +1,7 @@
+
 Compiler = "g++"
 Projet   = run
-Source   = main.cpp
+Source   = main.cpp DNA.cpp Population.cpp
 
 
 $(Projet):$(Source)

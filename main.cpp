@@ -2,19 +2,16 @@
 #include <string>
 #include <random>
 #include <ctime>
-#include "DNA.cpp"
+#include "Population.hpp"
 
 
 
 int main(){
 
-    std::string target = "KuntimaT";
-
+    std::string target = "kuntima";
+    int target_size = target.length();
     
-    DNA d(8);
-    std::cout << "\n" ;
-    d.fitness(target);
-    std::cout << "\n"<< d.fitness_score << std::endl;
+    Population pop(target, 0.01, 5 ,0.05);
     
     
     
