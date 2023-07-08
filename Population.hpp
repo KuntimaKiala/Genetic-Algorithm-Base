@@ -18,6 +18,7 @@
 #include "DNA.hpp"
 #include <iostream>
 #include <list>
+#include <vector>
 
 class Population {
 public:
@@ -28,10 +29,38 @@ public:
     
     void set_POP_MAX(int num);
     int get_POP_MAX() ;
-    /*void calcFitness() ;
-    std::list <DNA> matingPool ;*/
+
+    void set_Target(std::string phrase);
+    std::string get_Target() ;
+
+    void set_THRESHOLD_SCORE(float score);
+    float get_THRESHOLD_SCORE() ;
+
+    void set_MUTATION_RATE(float mutation_rate);
+    float get_MUTATION_RATE() ;
+
+    char random(int min, int max);
+    int  random(int max);
+    float random();
+    
+    void calcFitness();
+    void naturalSelection() ;
+    void generate();
+
+    std::string* getBest() ;
+    
+    int generations  ;
+    bool finished ;
+    int perfectScore;
+    std::vector<DNA *> population;
 protected:
  int population_max;
+ std::vector <DNA*> matingPool ;
+ int population_size = population_max ;
+ std::string target_phrase ;
+ float threshold_score ;
+ float increments = 0.025;
+ float mutationRate ;
  
 };
 

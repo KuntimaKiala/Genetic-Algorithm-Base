@@ -17,9 +17,8 @@ DNA::DNA(int dna_size)
         genes[i] = random(32, 127);
     }
     
-    
-}
 
+}
 DNA::~DNA()
 {
   delete[] genes;
@@ -40,31 +39,35 @@ int DNA::getDNA() {
     }
 
 void DNA::fitness(std::string target){
-    int score = 0;
+    float score = 0.0;
     for(int i= 0; i < target.length(); i++){
-       
         if (target[i] == genes[i]){
             score++;
+           
         }
 
     }
-    fitness_score = score / target.length() ;
+    
+    fitness_score = score / ((float)target.length()) ;
+    
 
 }
 
 
 DNA* DNA::crossover( DNA partner){
 
-int genes_size = sizeof(genes)/sizeof(genes[0]) ;
+int genes_size = getDNA() ; //sizeof(genes)/sizeof(genes[0]) ;
 int midpoint = random(gene_size-1) ;
 DNA* child = new DNA(genes_size) ;
 
 for (int i = 0; i < gene_size ; i++) {
-
+    std::cout << "ddddbm:"<<genes[i] << " :"<< gene_size <<std::endl;
     if (i > midpoint) {
         child->genes[i] = genes[i] ;
     }
     child->genes[i] = partner.genes[i] ;
+
+    
 
 }
 
@@ -73,11 +76,13 @@ return child;
 }
 
 void DNA::mutate(float mutationRate) {
-    int genes_size = sizeof(genes)/sizeof(genes[0]) ;
-    float var = 1;
+    int genes_size = getDNA() ;//sizeof(genes)/sizeof(genes[0]) ;
+    //std::cout << "boom :"<<genes_size << "-->"<< random()<<std::endl;
     for (int i = 0; i < genes_size; i++) {
-      if (random(var) < mutationRate) {
-        genes[i] = random(32,128);
+      if (random() < mutationRate) {
+        //genes[i] = random(32,128);
+        //std::cout << "boom boom boom :"<<genes[i]<<std::endl;
+        //std::cout << "bbmm:"<<genes[i]<<std::endl;
       }
     }
   }
@@ -111,4 +116,15 @@ float DNA::random()
 }
 
 
+
+std::string* DNA::getPhrase() {
+
+    //float* angles = new float[3];
+    std::string* _genes = new std::string[gene_size] ;
+    for (int i =0; i < gene_size; i++){
+        _genes[i] = genes[i];
+
+    }
+    return _genes ;
+}
 
