@@ -27,12 +27,12 @@ Population::Population(std::string target_t, float mutationRate_m, int populatio
     
    
     for (int i = 0 ; i < population_max; i++){
-        population.push_back(new DNA(target_t.length()));
-        population[i]->fitness(target_phrase);
+        population.push_back(DNA(target_t.length()));
+        population[i].fitness(target_phrase);
       
         
     }
-    matingPool = std::vector <DNA*>();
+    matingPool = std::vector <DNA>();
     perfectScore = 1 ;
     finished = false;
     generations = 0 ;
@@ -43,18 +43,18 @@ Population::Population(std::string target_t, float mutationRate_m, int populatio
 
     for (int i = 0 ; i < population.size(); i++){
         
-        population[i]->fitness(target_phrase);
+        population[i].fitness(target_phrase);
     }
     
  }
 
 
 void Population::naturalSelection() {
-    matingPool.clear();
+    matingPool = std::vector <DNA>();
     float maxFitness = 0.0;
     for (int i = 0; i < population.size(); i++) {
-      if (population[i]->fitness_score > maxFitness) {
-        maxFitness = population[i]->fitness_score;
+      if (population[i].fitness_score > maxFitness) {
+        maxFitness = population[i].fitness_score;
       }
     }
     
@@ -64,11 +64,10 @@ void Population::naturalSelection() {
     for (int i = 0; i < population.size(); i++) {
       
        
-      float fitness = population[i]->fitness_score/maxFitness ;
+      float fitness = population[i].fitness_score/maxFitness ;
       int n = int(fitness * 100);  // Arbitrary multiplier, we can also use monte carlo method
       for (int j = 0; j < n; j++) {              // and pick two random numbers
-        if (population[i]->fitness_score > threshold_score) {
-
+        if (population[i].fitness_score > threshold_score) {
             matingPool.push_back(population[i]);
             
 
@@ -92,7 +91,7 @@ void Population::naturalSelection() {
 }
 
 void Population::generate(){
-    DNA* child ;
+    DNA child ;
    
    
     for (int i = 0; i < population.size(); i++){
@@ -100,12 +99,12 @@ void Population::generate(){
         int a = random(m);
         int b = random(m);
       
-        DNA* partnerA = matingPool[a];
-        DNA* partnerB = matingPool[b] ;
+        DNA partnerA = matingPool[a];
+        DNA partnerB = matingPool[b] ;
 
      
-        child = partnerA->crossover(*partnerB) ;
-        child->mutate(mutationRate);
+        child = partnerA.crossover(partnerB) ;
+        child.mutate(mutationRate);
         population[i] = child;
         
     }
@@ -113,8 +112,6 @@ void Population::generate(){
     generations++ ;
     
     threshold_score += increments ;
-    delete child ;
-
     
 
 }
@@ -125,8 +122,8 @@ std::string Population::getBest(){
     float worldrecord = 0 ;
     int index = 0 ;
     for (int i = 0; i < population.size(); i++){
-        if(population[i]->fitness_score > worldrecord){
-            worldrecord = population[i]->fitness_score;
+        if(population[i].fitness_score > worldrecord){
+            worldrecord = population[i].fitness_score;
             index = i;
 
         }
@@ -137,7 +134,7 @@ std::string Population::getBest(){
 
     }
 
-    return population[index]->getPhrase() ;
+    return population[index].getPhrase() ;
  }
 
 void Population::set_THRESHOLD_SCORE(float score){

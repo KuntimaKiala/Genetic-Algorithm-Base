@@ -52,13 +52,13 @@ public:
     int generations  ;
     bool finished ;
     int perfectScore;
-    std::vector<DNA *> population;
+    std::vector<DNA > population;
     float threshold_score ; 
     int counter = 0 ;
 
 protected:
  int population_max;
- std::vector <DNA*> matingPool ;
+ std::vector <DNA> matingPool ;
  int population_size = population_max ;
  std::string target_phrase ;
  

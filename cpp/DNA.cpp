@@ -55,18 +55,18 @@ void DNA::fitness(std::string target){
 }
 
 
-DNA* DNA::crossover( DNA& partner){
+DNA DNA::crossover( DNA& partner){
 
 int midpoint = random(gene_size-1) ;
 //std::vector<DNA*> child ;
-DNA* child = new DNA(gene_size) ;
+DNA child = DNA(gene_size) ;
 
 for (int i = 0; i < gene_size ; i++) {
    
     if (i > midpoint) {
-        child->genes[i] = genes[i] ;
+        child.genes[i] = genes[i] ;
     }
-    child->genes[i] = partner.genes[i] ;
+    child.genes[i] = partner.genes[i] ;
 
     
 

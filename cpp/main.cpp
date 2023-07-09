@@ -12,13 +12,11 @@ void run(Population &population, int i);
 int main(){
     // "Don't talk about my moms, yo disqudsqhdisqhdiosq-- Madvillain";
     std::string name = "Pablo Diego Jose Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santisima Trinidad Ruiz y Picasso";
-    std::string target =  "Don't talk about my moms, yo!";
+    std::string target =  "Karma is a b*tch";
 
-
-    
     int target_size = target.length();
     float mutationRate = 0.05;
-    int population_max = 50 ;
+    int population_max = 20 ;
     float threshold_init = 0.15;
     Population pop(target, mutationRate, population_max ,threshold_init);
 
@@ -43,7 +41,7 @@ int main(){
 
 void run(Population &pop, int epoch){
 
-    std::cout << "score :" << pop.threshold_score <<  std::endl ;
+    std::cout << "accuracy :" << pop.threshold_score <<  std::endl ;
     pop.naturalSelection() ;
     pop.generate();
     pop.calcFitness();

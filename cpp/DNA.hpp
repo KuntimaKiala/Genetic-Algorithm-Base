@@ -33,7 +33,7 @@ public:
     int  random(int max);
     float random();
     float fitness_score = 0.0;
-    DNA* crossover( DNA& partner);
+    DNA crossover( DNA& partner);
     void mutate(float mutationRate);
     std::string GENES () ;
   
