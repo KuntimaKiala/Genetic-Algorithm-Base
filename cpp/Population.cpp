@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Population.hpp"
-#include <random>
+
 
 
 Population::Population()
@@ -66,6 +66,8 @@ void Population::naturalSelection() {
        
       float fitness = population[i].fitness_score/maxFitness ;
       int n = int(fitness * 100);  // Arbitrary multiplier, we can also use monte carlo method
+    
+     
       for (int j = 0; j < n; j++) {              // and pick two random numbers
         if (population[i].fitness_score > threshold_score) {
             matingPool.push_back(population[i]);
@@ -79,7 +81,7 @@ void Population::naturalSelection() {
     
     if (matingPool.size() == 0) {
         
-        threshold_score = threshold_score - increments*2.5 ;
+        threshold_score = maxFitness - increments*2.5 ;
         naturalSelection() ;
         
 
@@ -90,10 +92,11 @@ void Population::naturalSelection() {
 
 }
 
-void Population::generate(){
+std::string Population::generate(){
     DNA child ;
    
-   
+    float worldrecord = 0 ;
+    int index = 0 ;
     for (int i = 0; i < population.size(); i++){
         int m = matingPool.size() - 1 ;
         int a = random(m);
@@ -106,13 +109,24 @@ void Population::generate(){
         child = partnerA.crossover(partnerB) ;
         child.mutate(mutationRate);
         population[i] = child;
-        
+        population[i].fitness(target_phrase);
+        if(population[i].fitness_score > worldrecord){
+            worldrecord = population[i].fitness_score;
+            index = i;
+
+        }
+
     }
+    if(worldrecord==perfectScore){
+        finished = true;
+
+    }
+    
     
     generations++ ;
     
     threshold_score += increments ;
-    
+    return population[index].getPhrase() ;
 
 }
 

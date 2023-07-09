@@ -20,7 +20,7 @@ class Population() :
         self.generations   = 0        # the number of generations    
         self.finished      = False    # to check when we are done         
         self.perfectScore  = 0
-        self.increments = 0.005
+        self.increments = 0.007
         
     #1 - initilize, the elements of the population are the dna  
     def population_init(self, target, mutationRate, population_size, init_score= 0.09)    :
@@ -69,7 +69,7 @@ class Population() :
             fitness = self.population[i].fitness_score/self.maxFitness
             
             n = int(fitness * 100)
-            for i in range(n) :
+            for _ in range(n) :
                 if self.population[i].fitness_score  >= self.init_score :
                     
                     self.matingPool.append(self.population[i])

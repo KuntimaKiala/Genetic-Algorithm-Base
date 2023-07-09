@@ -17,8 +17,8 @@
 
 #include "DNA.hpp"
 #include <iostream>
-#include <list>
 #include <vector>
+#include <random>
 
 class Population {
 public:
@@ -45,7 +45,7 @@ public:
     
     void calcFitness();
     void naturalSelection() ;
-    void generate();
+    std::string  generate();
 
     std::string getBest() ;
     
@@ -62,7 +62,7 @@ protected:
  int population_size = population_max ;
  std::string target_phrase ;
  
- float increments = 0.025;
+ float increments = 0.005;
  float mutationRate ;
  
 };

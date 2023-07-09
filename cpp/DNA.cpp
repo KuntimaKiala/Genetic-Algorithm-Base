@@ -1,6 +1,6 @@
 #include <iostream>
 #include "DNA.hpp"
-#include <random>
+
 
 
 DNA::DNA()
@@ -120,13 +120,13 @@ float DNA::random()
 std::string DNA::getPhrase() {
 
     //float* angles = new float[3];
-    std::string _genes ;
+    std::string _genes = genes;
 
  
-    for (int i =0; i < gene_size; i++){
-        _genes.push_back(genes[i]);
-
-    }
+    //for (int i =0; i < gene_size; i++){
+    //    _genes.push_back(genes[i]);
+    //
+    //}
     return _genes ;
 }
 

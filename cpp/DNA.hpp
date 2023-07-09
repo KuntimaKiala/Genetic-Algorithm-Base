@@ -4,6 +4,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <random>
 
 // Genetic Algorithm, Evolving Shakespeare
 
@@ -16,7 +17,6 @@
 //      -- mutate DNA
 
 
-//#include "Monster.hpp"
 class DNA {
 public:
 
