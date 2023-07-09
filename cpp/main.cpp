@@ -12,7 +12,7 @@ void run(Population &population, int i);
 int main(){
     // "Don't talk about my moms, yo disqudsqhdisqhdiosq-- Madvillain";
     std::string name = "Pablo Diego Jose Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santisima Trinidad Ruiz y Picasso";
-    std::string target =  "Amitnuk Alaik Leugim";
+    std::string target =  "Don't talk about my moms, yo!";
 
 
     
