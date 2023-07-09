@@ -27,21 +27,21 @@ public:
     void setDNA(int num);
     int getDNA() ;
     void fitness(std::string target);
-    std::string* getPhrase() ;
+    std::string getPhrase() ;
     char random(int min, int max);
     int  random(int max);
     float random();
     float fitness_score = 0.0;
-    DNA* crossover( DNA partner);
+    DNA* crossover( DNA& partner);
     void mutate(float mutationRate);
-    char * GENES () ;
+    std::string GENES () ;
   
     
 
 
 protected:
     int gene_size;
-    char *genes = new char[gene_size];
+    std::string genes;
     int target_size = gene_size ;
     
     

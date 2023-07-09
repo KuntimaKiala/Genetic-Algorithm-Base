@@ -47,18 +47,21 @@ public:
     void naturalSelection() ;
     void generate();
 
-    std::string* getBest() ;
+    std::string getBest() ;
     
     int generations  ;
     bool finished ;
     int perfectScore;
     std::vector<DNA *> population;
+    float threshold_score ; 
+    int counter = 0 ;
+
 protected:
  int population_max;
  std::vector <DNA*> matingPool ;
  int population_size = population_max ;
  std::string target_phrase ;
- float threshold_score ;
+ 
  float increments = 0.025;
  float mutationRate ;
  
