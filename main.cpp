@@ -10,19 +10,20 @@
 void run(Population &population, int i);
 
 int main(){
-
-    std::string target = "Dont't talk about my moms, yo!";
+    // "Don't talk about my moms, yo disqudsqhdisqhdiosq-- Madvillain";
+    std::string name = "Pablo Diego Jose Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santisima Trinidad Ruiz y Picasso";
+    std::string target =  "Amitnuk Alaik Leugim";
 
 
     
     int target_size = target.length();
-    float mutationRate = 0.03;
-    int population_max = 150 ;
+    float mutationRate = 0.05;
+    int population_max = 50 ;
     float threshold_init = 0.15;
-    Population pop(target, mutationRate, population_max , threshold_init);
+    Population pop(target, mutationRate, population_max ,threshold_init);
 
     int i = 1;
-    int epoch = 5000 ;
+    int epoch = 5000;
     auto begin = std::chrono::high_resolution_clock::now();
     while (i <= epoch and pop.finished==false)
     {
@@ -46,10 +47,10 @@ void run(Population &pop, int epoch){
     pop.naturalSelection() ;
     pop.generate();
     pop.calcFitness();
-  
     
+   
     
-    std::string best = pop.getBest() ;
+   std::string best = pop.getBest() ;
 
     std::cout << "\nphrase ("<< epoch <<") :"<< std::endl ;
     for (int i = 0; i < pop.get_Target().size(); i++){

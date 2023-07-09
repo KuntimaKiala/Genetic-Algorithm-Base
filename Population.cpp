@@ -29,9 +29,9 @@ Population::Population(std::string target_t, float mutationRate_m, int populatio
     for (int i = 0 ; i < population_max; i++){
         population.push_back(new DNA(target_t.length()));
         population[i]->fitness(target_phrase);
-
+      
+        
     }
-    
     matingPool = std::vector <DNA*>();
     perfectScore = 1 ;
     finished = false;
@@ -41,11 +41,11 @@ Population::Population(std::string target_t, float mutationRate_m, int populatio
 
  void Population::calcFitness(){
 
-    for (int i = 0 ; i < population_max; i++){
+    for (int i = 0 ; i < population.size(); i++){
+        
         population[i]->fitness(target_phrase);
-
     }
-
+    
  }
 
 
@@ -93,8 +93,10 @@ void Population::naturalSelection() {
 
 void Population::generate(){
     DNA* child ;
+   
+   
     for (int i = 0; i < population.size(); i++){
-        int m = matingPool.size() -1 ;
+        int m = matingPool.size() - 1 ;
         int a = random(m);
         int b = random(m);
       
@@ -107,7 +109,7 @@ void Population::generate(){
         population[i] = child;
         
     }
-   
+    
     generations++ ;
     
     threshold_score += increments ;

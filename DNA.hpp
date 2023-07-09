@@ -3,6 +3,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 
 // Genetic Algorithm, Evolving Shakespeare
 
