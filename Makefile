@@ -1,7 +1,7 @@
 
 Compiler = "g++"
 Projet   = run
-Source   = main.cpp DNA.cpp Population.cpp
+Source   = cpp/main.cpp cpp/DNA.cpp cpp/Population.cpp
 
 
 $(Projet):$(Source)
